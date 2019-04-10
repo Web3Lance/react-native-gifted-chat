@@ -104,22 +104,22 @@ const styles = {
   left: StyleSheet.create({
     container: {},
     text: {
-      color: 'black',
+      color: '#226678',
       ...textStyle,
     },
     link: {
-      color: 'black',
+      color: '#3b8799',
       textDecorationLine: 'underline',
     },
   }),
   right: StyleSheet.create({
     container: {},
     text: {
-      color: 'white',
+      color: '#236779',
       ...textStyle,
     },
     link: {
-      color: 'white',
+      color: '#3b8799',
       textDecorationLine: 'underline',
     },
   }),

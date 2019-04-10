@@ -40,14 +40,13 @@ export default class Message extends React.Component {
     const { nextMessage } = this.props;
     const nextPropsMessage = nextProps.nextMessage;
     return (
-      next.sent !== current.sent ||
+      next.send !== current.send ||
       next.received !== current.received ||
       next.pending !== current.pending ||
       next.createdAt !== current.createdAt ||
       next.text !== current.text ||
       next.image !== current.image ||
       next.video !== current.video ||
-      next.audio !== current.audio ||
       nextMessage !== nextPropsMessage
     );
   }

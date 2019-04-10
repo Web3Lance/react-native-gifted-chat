@@ -40,9 +40,9 @@ const styles = StyleSheet.create({
   },
   text: {
     backgroundColor: Color.backgroundTransparent,
-    color: Color.defaultColor,
-    fontSize: 12,
-    fontWeight: '600',
+    color: '#eee',
+    fontSize: 11,
+    fontWeight: '100',
   },
 });
 

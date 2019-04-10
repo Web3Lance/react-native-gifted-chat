@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Text, Clipboard, StyleSheet, TouchableWithoutFeedback, View, ViewPropTypes } from 'react-native';
+import { Text, StyleSheet, TouchableWithoutFeedback, View, ViewPropTypes } from 'react-native';
 
 import MessageText from './MessageText';
 import MessageImage from './MessageImage';
@@ -19,26 +19,7 @@ export default class Bubble extends React.Component {
     if (this.props.onLongPress) {
       this.props.onLongPress(this.context, this.props.currentMessage);
     } else if (this.props.currentMessage.text) {
-      const options =
-        this.props.optionTitles.length > 0
-          ? this.props.optionTitles.slice(0, 2)
-          : ['Copy Text', 'Cancel'];
-      const cancelButtonIndex = options.length - 1;
-      this.context.actionSheet().showActionSheetWithOptions(
-        {
-          options,
-          cancelButtonIndex,
-        },
-        (buttonIndex) => {
-          switch (buttonIndex) {
-            case 0:
-              Clipboard.setString(this.props.currentMessage.text);
-              break;
-            default:
-              break;
-          }
-        },
-      );
+      this.props.onPressLongMess(this.props.currentMessage);
     }
   };
 
@@ -187,6 +168,32 @@ export default class Bubble extends React.Component {
     );
   }
 
+  renderBubble(props) {
+    return (
+        <Bubble
+            {...props}
+            wrapperStyle={{
+                left: {
+                    backgroundColor: '#fff',
+                },
+                right: {
+                    backgroundColor: '#b6fad6',
+                }
+            }}
+            textStyle={{
+                right: {
+                    color: '#226678',
+                    fontSize: 14
+                },
+                left: {
+                  color: '#226678',
+                    fontSize: 14
+                }
+            }}
+        />
+    );
+}
+
 }
 
 const styles = {
@@ -273,7 +280,6 @@ Bubble.defaultProps = {
   renderTicks: null,
   renderTime: null,
   position: 'left',
-  optionTitles: ['Copy Text', 'Cancel'],
   currentMessage: {
     text: null,
     createdAt: null,
@@ -303,7 +309,6 @@ Bubble.propTypes = {
   renderTime: PropTypes.func,
   renderTicks: PropTypes.func,
   position: PropTypes.oneOf(['left', 'right']),
-  optionTitles: PropTypes.arrayOf(PropTypes.string),
   currentMessage: PropTypes.object,
   nextMessage: PropTypes.object,
   previousMessage: PropTypes.object,

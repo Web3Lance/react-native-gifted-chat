@@ -83,34 +83,47 @@ export default class InputToolbar extends React.Component {
 
   render() {
     return (
-      <View style={[styles.container, this.props.containerStyle, { position: this.state.position }]}>
-        <View style={[styles.primary, this.props.primaryStyle]}>
-          {this.renderActions()}
-          {this.renderComposer()}
-          {this.renderSend()}
+      <View  style={[styles.containerFix, this.props.containerStyle, { position: this.state.position }]}>
+        <View style={[styles.container]}>
+          <View style={[styles.primary, this.props.primaryStyle]}>
+            {this.renderActions()}
+            {this.renderComposer()}
+            {this.renderSend()}
+          </View>
+          {this.renderAccessory()}
         </View>
-        {this.renderAccessory()}
-      </View>
+        </View>
     );
   }
 
 }
 
 const styles = StyleSheet.create({
-  container: {
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: Color.defaultColor,
-    backgroundColor: Color.white,
+  containerFix: {
+    backgroundColor: '#4aa086',
     bottom: 0,
     left: 0,
     right: 0,
+  },
+  container: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: Color.defaultColor,
+    backgroundColor: '#fff',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    marginLeft : 13,
+    marginRight : 13,
+    marginBottom : 10,
+    marginTop : 10,
+    borderRadius : 6,   
   },
   primary: {
     flexDirection: 'row',
     alignItems: 'flex-end',
   },
   accessory: {
-    height: 44,
+    height: 75,
   },
 });
 

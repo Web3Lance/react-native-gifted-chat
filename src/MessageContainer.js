@@ -154,7 +154,7 @@ export default class MessageContainer extends React.PureComponent {
       return <View style={styles.container} />;
     }
     return (
-      <View style={this.props.alignTop ? styles.containerAlignTop : styles.container}>
+      <View style={styles.container}>
         {this.state.showScrollBottom && this.props.scrollToBottom ? this.renderScrollToBottomWrapper() : null}
         <FlatList
           ref={(ref) => (this.flatListRef = ref)}
@@ -183,10 +183,7 @@ export default class MessageContainer extends React.PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  containerAlignTop: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
+    paddingBottom : 20,
   },
   contentContainerStyle: {
     justifyContent: 'flex-end',
@@ -215,6 +212,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowOffset: { width: 0, height: 0 },
     shadowRadius: 1,
+    
   },
 });
 
@@ -231,7 +229,6 @@ MessageContainer.defaultProps = {
   extraData: null,
   scrollToBottom: false,
   scrollToBottomOffset: 200,
-  alignTop: false,
 };
 
 MessageContainer.propTypes = {
@@ -249,5 +246,4 @@ MessageContainer.propTypes = {
   scrollToBottom: PropTypes.bool,
   scrollToBottomOffset: PropTypes.number,
   scrollToBottomComponent: PropTypes.func,
-  alignTop: PropTypes.bool,
 };
